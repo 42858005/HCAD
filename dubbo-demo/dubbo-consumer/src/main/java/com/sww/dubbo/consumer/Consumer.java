@@ -25,10 +25,15 @@ public class Consumer {
 		order.setUserId("12306");
 		order.setOrderNo("");
 		String orderNo = orderService.createOrder(order); // 执行远程方法
-		System.out.println(orderNo); // 显示调用结果
+		System.out.println("orderNo=" + orderNo); // 显示调用结果
 
 		System.out.println();
 		System.out.println(orderService);
+
+		Thread.sleep(100L);
+		OrderModel om = orderService.getOrder(orderNo);
+		System.out.println("获取到订单编号为" + orderNo + "的信息：" + om.toString());
+
 		System.in.read();
 		context.close();
 	}
